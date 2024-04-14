@@ -108,7 +108,7 @@ locals {
     apiVersion = "v1"
     kind       = "Secret"
     metadata = {
-      name        = try(var.cluster.secret_name, local.cluster_name)
+      name        = try(var.cluster.secret_name, lower(local.cluster_name))
       namespace   = try(var.cluster.secret_namespace, "argocd")
       annotations = local.argocd_annotations
       labels      = local.argocd_labels
